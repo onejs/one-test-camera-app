@@ -1,9 +1,9 @@
-import { Tabs } from "one";
-import { HomeIcons } from "./HomeIcons";
-import { useTheme } from "tamagui";
+import { Tabs } from 'one'
+import { HomeIcons } from './HomeIcons'
+import { useTheme } from 'tamagui'
 
 export function HomeLayout() {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <Tabs
@@ -14,9 +14,9 @@ export function HomeLayout() {
       }}
     >
       <Tabs.Screen
-        name="(feed)"
+        name="(photos)"
         options={{
-          title: "Feed",
+          title: 'Photos',
           tabBarIcon: ({ color }) => <HomeIcons.Home size={20} color={color} />,
         }}
       />
@@ -24,12 +24,10 @@ export function HomeLayout() {
       <Tabs.Screen
         name="upload"
         options={{
-          title: "Upload",
-          tabBarIcon: ({ color }) => (
-            <HomeIcons.Camera size={20} color={color} />
-          ),
+          title: 'Upload',
+          tabBarIcon: ({ color }) => <HomeIcons.Camera size={20} color={color} />,
         }}
       />
     </Tabs>
-  );
+  )
 }

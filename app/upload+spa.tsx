@@ -1,40 +1,40 @@
-import { useState } from "react";
-import { Text, YStack, XStack, Input } from "tamagui";
-import { Upload } from "@tamagui/lucide-icons";
-import { Stack } from "one";
-import { DocumentPickerResult } from "expo-document-picker";
+import { useState } from 'react'
+import { Text, YStack, XStack, Input } from 'tamagui'
+import { Upload } from '@tamagui/lucide-icons'
+import { Stack } from 'one'
+import { DocumentPickerResult } from 'expo-document-picker'
 
-import { PageContainer } from "~/code/ui/PageContainer";
+import { PageContainer } from '~/code/ui/PageContainer'
 
-import CameraView from "~/code/camera";
+import CameraView from '~/code/camera'
 
 export default function UploadPage() {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
 
   const upload = async (res: DocumentPickerResult) => {
-    const file = res.assets?.[0];
+    const file = res.assets?.[0]
     if (file && file.file) {
-      const formData = new FormData();
-      formData.append("file", file.file);
-      formData.append("name", name);
-      formData.append("description", description);
+      const formData = new FormData()
+      formData.append('file', file.file)
+      formData.append('name', name)
+      formData.append('description', description)
 
-      await fetch("/api/upload", {
-        method: "post",
+      await fetch('/api/upload', {
+        method: 'post',
         body: formData,
-      });
+      })
 
-      setName("");
-      setDescription("");
+      setName('')
+      setDescription('')
     }
-  };
+  }
 
   return (
     <>
       <Stack.Screen
         options={{
-          title: "Feed",
+          title: 'Feed',
         }}
       />
       <PageContainer>
@@ -63,7 +63,7 @@ export default function UploadPage() {
               size="$6"
               label="Upload"
               onChange={(files) => {
-                return upload(files);
+                return upload(files)
               }}
               width={300}
             ></CameraView>
@@ -71,5 +71,5 @@ export default function UploadPage() {
         </XStack>
       </PageContainer>
     </>
-  );
+  )
 }

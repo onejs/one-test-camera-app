@@ -32,5 +32,6 @@
     "**/dist",
     "**/types",
     "**/__tests__"
-  ]
+  ],
+  "extends": "expo/tsconfig.base"
 }
